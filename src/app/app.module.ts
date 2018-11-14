@@ -7,8 +7,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MatCardModule, MatButtonModule, MatIconModule, MatBadgeModule, MatCheckboxModule, MatGridListModule, MatMenuModule, MatToolbarModule } from '@angular/material';
-import { FlexModule } from '@angular/flex-layout';
-
 
 @NgModule({
   declarations: [
@@ -21,7 +19,6 @@ import { FlexModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     MatCardModule, MatButtonModule, MatIconModule, MatBadgeModule, MatCheckboxModule, MatGridListModule,
     MatToolbarModule,
-    FlexModule,
     AppRoutingModule
   ],
   providers: [],
