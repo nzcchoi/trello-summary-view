@@ -12,7 +12,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     overflow-x:scroll;
     overflow-y:hidden;
     background:rgba(255,255,255,.8); 
-    height:70px;
+    height:60px;
     position:relative;
     border-radius: 3px;
 
@@ -52,6 +52,16 @@ padding: 10px;
     padding: 5px;
     margin: 5px;
     min-width: 20em;
+}
+
+.member-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #dfe3e6;
+    color: #17394d;
+    text-align: center;
+    margin-top: -8px;
 }
 
 ::-webkit-scrollbar-track

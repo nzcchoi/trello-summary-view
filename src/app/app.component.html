@@ -1,32 +1,35 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar>Trello Summary View</mat-toolbar>
 
-<mat-card class="board-card" *ngFor="let b of boards" [ngStyle]="{'background-image': 'url(' + b.prefs.backgroundImage + ')'}"
+<mat-card class="board-card" *ngFor="let b of boards" [style.background-image]="b.prefs.backgroundImage ? 'url(' + b.prefs.backgroundImage + ')' : ''"
   [style.background-color]="b.prefs.backgroundColor">
   <mat-card-title>{{b.name}}</mat-card-title>
   <mat-card-content>
     <div class="board-lists">
       <div class="board-list">
-        <button class="list-button" mat-raised-button *ngFor="let l of b.lists">{{l.name}}<span matBadge="{{l.count}}"
-            matBadgeOverlap="false"></span></button>
+        <button class="list-button" mat-raised-button *ngFor="let l of b.lists" (click)="openBottomSheet(b, l.id)">{{l.name}}<span
+            matBadge="{{l.count}}" matBadgeOverlap="false"></span></button>
       </div>
     </div>
   </mat-card-content>
 </mat-card>
-<span class="board-member">
-  <mat-checkbox>
-    All
-  </mat-checkbox>
-</span>
-<span *ngFor="let m of members" class="board-member">
-  <mat-checkbox>
-    <img *ngIf="m.avatarHash" src="http://trello-avatars.s3.amazonaws.com/{{m.avatarHash}}/50.png" style="width:25px;height:25px;">
-    {{m.fullName}}
-  </mat-checkbox>
-</span>
-<span class="board-member">
+<div *ngIf="members.length > 0">
+  <span class="board-member">
     <mat-checkbox>
-      Not assigned
+      <a mat-mini-fab>ALL</a> All
     </mat-checkbox>
   </span>
-  <router-outlet></router-outlet>
+  <span *ngFor="let m of members" class="board-member">
+    <mat-checkbox>
+      <a *ngIf="m.avatarHash" mat-mini-fab><img class="member-avatar" src="http://trello-avatars.s3.amazonaws.com/{{m.avatarHash}}/50.png"></a>
+      <a *ngIf="!m.avatarHash" mat-mini-fab>{{m.initials}}</a>
+      <span>{{m.fullName}}</span>
+    </mat-checkbox>
+  </span>
+  <span class="board-member">
+    <mat-checkbox>
+      <a mat-mini-fab>NA</a> Not assigned
+    </mat-checkbox>
+  </span>
+</div>
+<router-outlet></router-outlet>

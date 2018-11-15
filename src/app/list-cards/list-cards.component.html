@@ -1,0 +1,9 @@
+<mat-nav-list>
+  <a *ngFor="let c of data" href="{{c.url}}" target="_blank" mat-list-item (click)="openLink($event)">
+    <span mat-line>{{c.name}} <span *ngFor="let m of c.members">
+        <a *ngIf="m.avatarHash" mat-mini-fab><img class="member-avatar" src="http://trello-avatars.s3.amazonaws.com/{{m.avatarHash}}/50.png"></a>
+        <a *ngIf="!m.avatarHash" mat-mini-fab>{{m.initials}}</a>
+      </span>
+    </span>
+  </a>
+</mat-nav-list>
