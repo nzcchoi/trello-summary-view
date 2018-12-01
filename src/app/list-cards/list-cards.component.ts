@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, Inject } from '@angular/core';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
 
 @Component({
-  selector: 'tsv-list-cards',
+  selector: 'tv-list-cards',
   templateUrl: './list-cards.component.html',
   styles: []
 })

@@ -4,13 +4,13 @@
         "directive-selector": [
             true,
             "attribute",
-            "tsv",
+            "tv",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "tsv",
+            "tv",
             "kebab-case"
         ]
     }

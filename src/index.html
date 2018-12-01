@@ -3,18 +3,18 @@
 
 <head>
   <meta charset="utf-8">
-  <title>TrelloSummaryView</title>
+  <title>Trello View</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
-<body>
-  <tsv-root></tsv-root>
-
+<body class="main-body">
+  <tv-root></tv-root>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
     <!--
@@ -22,6 +22,13 @@
        https://trello.com/app-key 
     -->
   <script src="https://api.trello.com/1/client.js?key=[API_KEY]"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65217003-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-65217003-2');
+  </script>
 </body>
-
 </html>

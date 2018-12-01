@@ -1,35 +1,39 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<mat-toolbar>Trello Summary View</mat-toolbar>
+<mat-toolbar class="main-header">Trello View
+  <span class="fill-remaining-space"></span>
+ <button mat-stroked-button (click)="refresh()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+
+</mat-toolbar>
 
 <mat-card class="board-card" *ngFor="let b of boards" [style.background-image]="b.prefs.backgroundImage ? 'url(' + b.prefs.backgroundImage + ')' : ''"
   [style.background-color]="b.prefs.backgroundColor">
-  <mat-card-title>{{b.name}}</mat-card-title>
+  <mat-card-title><a mat-stroked-button class="board-button" href="{{b.url}}" target="_blank">{{b.name}}</a></mat-card-title>
   <mat-card-content>
-    <div class="board-lists">
+
+    <div class="board-lists scroll-container ps" (load)="onBoardList" [perfectScrollbar]="config">
       <div class="board-list">
-        <button class="list-button" mat-raised-button *ngFor="let l of b.lists" (click)="openBottomSheet(b, l.id)">{{l.name}}<span
-            matBadge="{{l.count}}" matBadgeOverlap="false"></span></button>
+        <button class="list-button" mat-raised-button *ngFor="let l of b.lists" (click)="openBottomSheet(b, l.id)"
+          matBadge="{{l.cardCount}}">{{l.name}}</button>
       </div>
     </div>
   </mat-card-content>
 </mat-card>
 <div *ngIf="members.length > 0">
   <span class="board-member">
-    <mat-checkbox>
-      <a mat-mini-fab>ALL</a> All
+    <mat-checkbox (change)="onAllMemberChecked($event)" [checked]="members.length === checkedMembersCount"
+      [indeterminate]="members.length !== checkedMembersCount && checkedMembersCount > 0">
+      <tv-avatar [initials]="'ALL'"></tv-avatar>
+      <span>All</span>
     </mat-checkbox>
   </span>
   <span *ngFor="let m of members" class="board-member">
-    <mat-checkbox>
-      <a *ngIf="m.avatarHash" mat-mini-fab><img class="member-avatar" src="http://trello-avatars.s3.amazonaws.com/{{m.avatarHash}}/50.png"></a>
-      <a *ngIf="!m.avatarHash" mat-mini-fab>{{m.initials}}</a>
+    <mat-checkbox [checked]="m.checked" (change)="onMemberChecked($event, m)">
+      <tv-avatar [avatarHash]="m.avatarHash" [initials]="m.initials" [fullName]="m.fullName"></tv-avatar>
       <span>{{m.fullName}}</span>
     </mat-checkbox>
   </span>
-  <span class="board-member">
-    <mat-checkbox>
-      <a mat-mini-fab>NA</a> Not assigned
-    </mat-checkbox>
-  </span>
 </div>
+
 <router-outlet></router-outlet>

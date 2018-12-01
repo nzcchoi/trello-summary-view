@@ -6,6 +6,6 @@ export class AppPage {
   }
 
   getParagraphText() {
-    return element(by.css('tsv-root h1')).getText();
+    return element(by.css('tv-root h1')).getText();
   }
 }

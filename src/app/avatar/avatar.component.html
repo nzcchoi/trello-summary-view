@@ -1,0 +1,4 @@
+<span class="member-avatar-wrapper" matTooltip="{{fullName}}">
+  <img *ngIf="avatarHash" class="member-avatar" src="http://trello-avatars.s3.amazonaws.com/{{avatarHash}}/50.png">
+  <span *ngIf="!avatarHash" class="member-avatar">{{initials}}</span>
+</span>
