@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { map } from 'rxjs/internal/operators/map';
 import { ListCardsComponent } from './list-cards/list-cards.component';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 import * as _ from 'lodash';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
